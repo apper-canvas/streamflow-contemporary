@@ -6,11 +6,10 @@ import Duration from '@/components/atoms/Duration';
 import Rating from '@/components/atoms/Rating';
 import ProgressBar from '@/components/atoms/ProgressBar';
 
-const ContentCard = ({ content, progress = 0, showProgress = false, size = 'md', className = '' }) => {
+const ContentCard = ({ content, progress = 0, showProgress = false, size = 'md', className = '', isContinueWatching = false }) => {
   const navigate = useNavigate();
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
-
   const sizeClasses = {
     sm: 'w-32 h-48',
     md: 'w-40 h-60',
@@ -28,9 +27,11 @@ const ContentCard = ({ content, progress = 0, showProgress = false, size = 'md',
     navigate(`/watch/${content.id}`);
   };
 
-  return (
+return (
     <motion.div
-      className={`${sizeClasses[size]} relative rounded-lg overflow-hidden cursor-pointer group ${className}`}
+      className={`${sizeClasses[size]} relative rounded-lg overflow-hidden cursor-pointer group ${className} ${
+        isContinueWatching ? 'ring-2 ring-primary/50 shadow-lg shadow-primary/20' : ''
+      }`}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.98 }}
       onClick={handleCardClick}
@@ -82,16 +83,24 @@ const ContentCard = ({ content, progress = 0, showProgress = false, size = 'md',
           </motion.button>
         </motion.div>
 
-        {/* Rating badge */}
+{/* Rating badge */}
         <div className="absolute top-2 left-2">
           <Rating rating={content.rating} />
         </div>
+
+        {/* Continue Watching badge */}
+        {isContinueWatching && (
+          <div className="absolute top-2 left-2 mt-8">
+            <div className="bg-primary/90 text-white text-xs px-2 py-1 rounded-full font-medium shadow-lg">
+              Continue Watching
+            </div>
+          </div>
+        )}
 
         {/* Duration badge */}
         <div className="absolute top-2 right-2 bg-black/70 rounded px-2 py-1">
           <Duration duration={content.duration} type={content.type} className="text-xs text-white" />
         </div>
-
         {/* Progress bar */}
         {showProgress && progress > 0 && (
           <div className="absolute bottom-0 left-0 right-0 px-2 pb-2">

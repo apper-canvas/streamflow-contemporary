@@ -11,6 +11,7 @@ const ContentRow = ({
   className = '',
   cardSize = 'md'
 }) => {
+  const isContinueWatchingRow = title === 'Continue Watching';
   const scrollRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -110,11 +111,12 @@ const ContentRow = ({
                   ease: "easeOut"
                 }}
               >
-                <ContentCard
+<ContentCard
                   content={item}
                   progress={progressData[item.id]?.progress || 0}
                   showProgress={showProgress}
                   size={cardSize}
+                  isContinueWatching={isContinueWatchingRow}
                 />
               </motion.div>
             ))}
