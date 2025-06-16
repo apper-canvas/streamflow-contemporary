@@ -1,0 +1,14 @@
+{
+  "id": "user_1",
+  "name": "John Doe",
+  "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
+  "watchlist": ["3", "7", "11", "14"],
+  "continueWatching": ["1", "4", "9"],
+  "preferences": {
+    "preferredGenres": ["Action", "Drama", "Science Fiction"],
+    "maturityRating": "TV-MA",
+    "autoplay": true,
+    "subtitles": false,
+    "audioLanguage": "en"
+  }
+}
