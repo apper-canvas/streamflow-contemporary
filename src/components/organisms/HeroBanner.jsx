@@ -41,9 +41,10 @@ const HeroBanner = ({ content, className = '' }) => {
           }`}
           onLoad={() => setImageLoaded(true)}
         />
-        {/* Gradient overlays */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+{/* Enhanced gradient overlays for wallpaper effect */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/60 to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/40" />
       </div>
 
       {/* Content */}
@@ -55,9 +56,12 @@ const HeroBanner = ({ content, className = '' }) => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            {/* Title */}
+{/* Netflix-style wallpaper title */}
             <motion.h1
-              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-bold text-white mb-4 leading-tight"
+              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-bold text-white mb-4 leading-tight drop-shadow-2xl"
+              style={{
+                textShadow: '2px 2px 4px rgba(0,0,0,0.8), 0px 0px 8px rgba(0,0,0,0.5)'
+              }}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
